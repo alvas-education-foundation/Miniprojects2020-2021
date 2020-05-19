@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Popcorn sale sales</title>
+	<!--<meta http-equiv="refresh" content="1">-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--<style type="text/css">
+		hr{ background:green; }
+		table,th,td{
+			border: 3px solid green;
+			border-collapse: collapse;
+		}
+		h1{color: #FE8532;
+		}
+	</style>
+    <style>
+input[type=text], select {
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: left;
+}
+input[type=submit] {
+    width: 10%;
+    background-color: #D68910;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: orange;
+}
+div {
+    border-radius: 30px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-top:0px;
+    margin-left:30px;
+    margin-right:30px;
+background-image: linear-gradient(#48C9B0,#273746);
+}
+
+
+
+.header {
+    border-radius: 15px;
+    background-color: #f1f1f1;
+background-image: linear-gradient(to bottom right, #273746, #45B39D);
+    padding: 20px;
+    text-align: center;
+
+}
+</style>-->
+    
+</head>
+
+<body bgcolor=#212F3C>
+
+
+
+	<h1 class="header" color="orange" size="20" style="Gabriola"> WELCOME TO JAVA POPCORN CLUB</h1>    
+<div id="main_wrapper">
+
+
+  <form action="popcorn.php" method="post">
+
+<center>
+
+    <label for="fname">First Name :</label>
+    <input type="text" id="fname" name="firstname" 
+    placeholder="Your name..">
+</br>
+    <label for="lname">Last Name :</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+</br>
+    <label for="country">Country :</label>
+    <select id="country" name="country">
+      <option value="india">India</option>
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+  </br>
+    
+
+</center>
+<br><br>
+
+
+
+	<table>
+		<tr><th>Product Name</th><th>Price</th><th>Quantity</th></tr>
+
+
+		<tr><td><font color="white">  <img src="unpopped.jpeg" alt="unpopped" style="width:120px;height:90px;"/><br/> Unpoped Popcorn</td>
+		<td><font color="white">$3.00</td><td><input type="number" name="up" id="up" value=0></td></tr>
+		
+
+		<tr><td><font color="white"> <img src="caramel.jpeg" alt="caramel" style="width:120px;height:90px;"/><br/> Caramel Popcorn</td>
+		<td><font color="white">$4.00</td><td><input type="number" name="cp" id="cp" value=0></td></tr>
+
+		<tr><td><font color="white"> <img src="caramelnut.jpeg" alt="caramelnut" style="width:120px;height:90px;"/><br/> Caramel Nut Popcorn</td>
+		<td><font color="white">$6.00</td><td><input type="number" name="cnp" id="cnp" value=0></td></tr>
+
+		<tr><td><font color="white"><img src="toffey.jpeg" alt="toffee" style="width:120px;height:90px;"/><br/> Toffey Nut Popcorn</td>
+		<td><font color="white">$8.00</td><td><input type="number" name="tnp" id="tnp" value=0></td></tr>
+
+	</table><br>&emsp;&emsp;&emsp;&emsp;
+
+	<input type="button" name="" value="Total Cost" id="total" onclick="cost(total)">
+
+	<input type="text" name="total" id="tc" value=0><br><br>
+
+	<h2>Payment Method</h2>
+
+
+<select id="pm">
+    <option value="  through payment method (Cash On Delivery) of amount - ">COD</option>
+    <option value="  through card type(VISA) of amount - ">VISA</option>
+    <option value="  through card type(MASTER CARD) of amount - ">MASTER CARD</option>
+    <option value="  through card type(DISCOVER) of amount - ">DISCOVER</option>
+    <option value="  through payment method(CHECK) of amount - ">CHECK</option>
+</select>
+<br><br>
+
+ 	<input type="submit" id="submit_btn" name="button"  value="submit" /><br><br>
+
+	<input type="button" name="total" value="ORDER" id="place" onclick="order(place)" >
+	
+	<input type="reset" id="clr" value="clear" >
+
+</form>
+</div>
+
+
+	<script type="text/javascript">
+	
+	function cost(total) {
+			var up=0, cp=0, cnp=0, tnp=0;
+			up=parseInt(document.getElementById('up').value);
+			cp=parseInt(document.getElementById('cp').value);
+			cnp=parseInt(document.getElementById('cnp').value);
+			tnp=parseInt(document.getElementById('tnp').value);
+		
+			var total=(up*3)+(cp*4)+(cnp*6)+(tnp*8);
+				document.getElementById("tc").value=total;
+			
+		}
+	function order(place){
+		var fname=document.getElementById('fname').value;
+		var cost=document.getElementById('tc').value;
+		var pm=document.getElementById('pm').value;
+
+               var retVal = confirm("Do you want to place the order?  "+fname);
+               if( retVal == true ){
+                  document.write ("order has been placed!  " +fname +pm +cost);
+                  return true;
+               }
+               else{
+                  document.write ("you have declined to continue!  " +fname);
+                  return false;
+               }
+            }		s
+	</script>
+</body>
+</html>
